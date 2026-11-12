@@ -1,0 +1,16 @@
+name: recuperer-photo
+on:
+  push:
+    paths: ['.github/photo-url.txt']
+permissions:
+  contents: write
+jobs:
+  photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p _photos
+          curl -sSL "$(cat .github/photo-url.txt)" -o _photos/photo.jpg
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add _photos && git commit -m "Photo" && git push
