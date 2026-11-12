@@ -1,0 +1,225 @@
+/* ==========================================================================
+   Reliance Business : couche « couleurs vives » (12/11/2026)
+   Chargée après site.css et accueil.css. Elle garde le bleu marine du logo
+   comme base et ajoute des accents inspirés des grands cabinets
+   internationaux : bleu électrique (McKinsey), vert-turquoise (BCG),
+   ambre chaud pour les appels à l'action, dégradés et halos sur fonds foncés.
+   Pour revenir à l'ancien rendu : retirer la ligne couleurs.css de base.html.
+   ========================================================================== */
+:root {
+  --bleu-vif: #2563EB;
+  --bleu-vif-2: #1D4ED8;
+  --bleu-ciel: #5AB4FF;
+  --turquoise: #0EA5A0;
+  --turquoise-clair: #3FE0C5;
+  --ambre: #FFB321;
+  --ambre-2: #FF8A3D;
+  --corail: #FF6B5A;
+  --violet: #7C5CFF;
+  --grad-signature: linear-gradient(120deg, #2563EB 0%, #0EA5A0 100%);
+  --grad-chaud: linear-gradient(120deg, #FFC24B 0%, #FF7A45 100%);
+  --grad-ruban: linear-gradient(90deg, #2563EB 0%, #7C5CFF 30%, #0EA5A0 60%, #FFB321 85%, #FF7A45 100%);
+  --grad-texte-clair: linear-gradient(100deg, #2563EB 0%, #0E9488 100%);
+  --grad-texte-fonce: linear-gradient(100deg, #7CC4FF 0%, #3FE0C5 100%);
+  --halo-nuit:
+    radial-gradient(55% 80% at 88% 0%, rgba(37, 99, 235, .42) 0%, rgba(37, 99, 235, 0) 70%),
+    radial-gradient(45% 70% at 0% 100%, rgba(14, 165, 160, .30) 0%, rgba(14, 165, 160, 0) 70%),
+    radial-gradient(30% 50% at 55% 110%, rgba(124, 92, 255, .22) 0%, rgba(124, 92, 255, 0) 70%),
+    #10294C;
+}
+
+/* Liens et petits titres ------------------------------------------------ */
+a { color: var(--bleu-vif); }
+a:hover { color: var(--bleu-vif-2); }
+.eyebrow, .tag, .gold-t { color: var(--bleu-vif); }
+.dark .eyebrow, .hero .eyebrow { color: var(--turquoise-clair); }
+:focus-visible { outline-color: var(--bleu-vif); }
+
+/* Mots mis en valeur dans les titres : texte en dégradé */
+.gold-t, .page-accueil .ac-h2 .gold-t {
+  background: var(--grad-texte-clair); -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+}
+.gold, .dark .gold, .hero .gold, .ac-video .gold {
+  background: var(--grad-texte-fonce); -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+}
+.ac-appel .gold { background-image: var(--grad-chaud); }
+
+/* Boutons --------------------------------------------------------------- */
+.btn { border-radius: 10px; transition: background .24s, color .24s, border-color .24s, transform .2s, box-shadow .24s; }
+.btn-gold, .btn-ink {
+  background: var(--grad-signature); background-color: var(--bleu-vif); border-color: transparent; color: #fff;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, .28);
+}
+.btn-gold:hover, .btn-ink:hover { background: var(--bleu-vif-2); border-color: transparent; color: #fff; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(37, 99, 235, .36); }
+/* Sur fond foncé : ambre chaud, l'appel à l'action se voit tout de suite */
+.dark .btn-gold, .hero .btn-gold, .band .btn-gold, .case-hero .btn-gold,
+.ac-video .btn-gold, .ac-appel .btn-gold, .topbar .btn-gold {
+  background: var(--grad-chaud); background-color: var(--ambre); border-color: transparent; color: #10294C;
+  box-shadow: 0 10px 26px rgba(255, 138, 61, .32);
+}
+.dark .btn-gold:hover, .hero .btn-gold:hover, .band .btn-gold:hover, .case-hero .btn-gold:hover,
+.ac-video .btn-gold:hover, .ac-appel .btn-gold:hover, .topbar .btn-gold:hover {
+  background: #FFC94D; border-color: transparent; color: #10294C; transform: translateY(-2px);
+}
+.btn-ghost:hover { border-color: var(--turquoise-clair); color: var(--turquoise-clair); }
+.btn-line { border-radius: 10px; }
+.btn-line:hover { background: var(--bleu-vif); border-color: var(--bleu-vif); }
+
+/* En-tête --------------------------------------------------------------- */
+.nav a:hover, .nav a.on { border-bottom: 2px solid var(--ambre); }
+.lang a.on, .search-link:hover, .crumbs .here, .crumbs a:hover { color: var(--ambre); }
+
+/* Fonds foncés : halos colorés au lieu d'un aplat ----------------------- */
+.dark, .ac-video, .ac-appel { background: var(--halo-nuit); }
+.hero > .veil, .case-hero > .veil {
+  background:
+    linear-gradient(180deg, rgba(10, 29, 56, .78) 0%, rgba(10, 29, 56, .42) 45%, rgba(10, 29, 56, .9) 100%),
+    linear-gradient(120deg, rgba(37, 99, 235, .30) 0%, rgba(14, 165, 160, .18) 100%);
+}
+.hero-home > .veil, .ac-hero > .veil {
+  background:
+    linear-gradient(180deg, rgba(10, 29, 56, .68) 0%, rgba(10, 29, 56, .32) 45%, rgba(10, 29, 56, .84) 100%),
+    linear-gradient(115deg, rgba(37, 99, 235, .34) 0%, rgba(124, 92, 255, .12) 50%, rgba(14, 165, 160, .26) 100%);
+}
+.band > .veil { background: linear-gradient(90deg, rgba(10, 29, 56, .86) 0%, rgba(29, 78, 216, .35) 60%, rgba(14, 165, 160, .15) 100%); }
+.tile .cap { background: linear-gradient(0deg, rgba(10, 29, 56, .9), rgba(29, 78, 216, .15) 80%, rgba(10, 29, 56, 0)); }
+.tile .cap .tag { color: var(--ambre); }
+
+/* Liseré multicolore sous les bandeaux */
+.hero::after, .case-hero::after, .ac-appel::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--grad-ruban); z-index: 2;
+}
+.ac-appel { position: relative; }
+.ac-appel::before { top: 0; bottom: auto; }
+
+/* Fonds clairs : léger dégradé bleu-vert au lieu du gris-bleu uni */
+.sand, .ac-fond-sable { background: linear-gradient(160deg, #EAF1FF 0%, #F1F7FF 45%, #E9F8F5 100%); }
+body { background: #F8FAFF; }
+
+/* Chiffres -------------------------------------------------------------- */
+.stats .v, .mini-stats .v {
+  background: var(--grad-chaud); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+}
+.stats { border-top-color: rgba(255, 179, 33, .55); }
+.facts .v, .results .v, .timeline3 .v, .steps .n {
+  background: var(--grad-texte-clair); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+}
+.results { border-top: 3px solid transparent; border-image: var(--grad-ruban) 1; }
+
+/* Palette tournante pour les cartes numérotées --------------------------
+   Chaque carte reçoit sa couleur (--c) : bleu, violet, turquoise, orange,
+   vert, framboise, ciel, ambre. */
+.ac-expertises > :nth-child(8n+1), .exp-grid > :nth-child(8n+1), .rows > :nth-child(8n+1), .sect-grid > :nth-child(8n+1), .pillars > :nth-child(8n+1), .levers > :nth-child(8n+1), .ac-reals > :nth-child(8n+1), .cards > :nth-child(8n+1), .ac-temps > :nth-child(8n+1), .ac-joindre > :nth-child(8n+1), .ac-chiffres > :nth-child(8n+1), .ac-mini > :nth-child(8n+1), .steps > :nth-child(8n+1), .numbered > :nth-child(8n+1) { --c: #2563EB; }
+.ac-expertises > :nth-child(8n+2), .exp-grid > :nth-child(8n+2), .rows > :nth-child(8n+2), .sect-grid > :nth-child(8n+2), .pillars > :nth-child(8n+2), .levers > :nth-child(8n+2), .ac-reals > :nth-child(8n+2), .cards > :nth-child(8n+2), .ac-temps > :nth-child(8n+2), .ac-joindre > :nth-child(8n+2), .ac-chiffres > :nth-child(8n+2), .ac-mini > :nth-child(8n+2), .steps > :nth-child(8n+2), .numbered > :nth-child(8n+2) { --c: #7C5CFF; }
+.ac-expertises > :nth-child(8n+3), .exp-grid > :nth-child(8n+3), .rows > :nth-child(8n+3), .sect-grid > :nth-child(8n+3), .pillars > :nth-child(8n+3), .levers > :nth-child(8n+3), .ac-reals > :nth-child(8n+3), .cards > :nth-child(8n+3), .ac-temps > :nth-child(8n+3), .ac-joindre > :nth-child(8n+3), .ac-chiffres > :nth-child(8n+3), .ac-mini > :nth-child(8n+3), .steps > :nth-child(8n+3), .numbered > :nth-child(8n+3) { --c: #0E9F95; }
+.ac-expertises > :nth-child(8n+4), .exp-grid > :nth-child(8n+4), .rows > :nth-child(8n+4), .sect-grid > :nth-child(8n+4), .pillars > :nth-child(8n+4), .levers > :nth-child(8n+4), .ac-reals > :nth-child(8n+4), .cards > :nth-child(8n+4), .ac-temps > :nth-child(8n+4), .ac-joindre > :nth-child(8n+4), .ac-chiffres > :nth-child(8n+4), .ac-mini > :nth-child(8n+4), .steps > :nth-child(8n+4), .numbered > :nth-child(8n+4) { --c: #F07B2B; }
+.ac-expertises > :nth-child(8n+5), .exp-grid > :nth-child(8n+5), .rows > :nth-child(8n+5), .sect-grid > :nth-child(8n+5), .pillars > :nth-child(8n+5), .levers > :nth-child(8n+5), .ac-reals > :nth-child(8n+5), .cards > :nth-child(8n+5), .steps > :nth-child(8n+5), .numbered > :nth-child(8n+5) { --c: #1F9D5C; }
+.ac-expertises > :nth-child(8n+6), .exp-grid > :nth-child(8n+6), .rows > :nth-child(8n+6), .sect-grid > :nth-child(8n+6), .pillars > :nth-child(8n+6), .levers > :nth-child(8n+6), .ac-reals > :nth-child(8n+6), .cards > :nth-child(8n+6), .steps > :nth-child(8n+6), .numbered > :nth-child(8n+6) { --c: #E0457B; }
+.ac-expertises > :nth-child(8n+7), .exp-grid > :nth-child(8n+7), .rows > :nth-child(8n+7), .sect-grid > :nth-child(8n+7), .pillars > :nth-child(8n+7), .levers > :nth-child(8n+7), .ac-reals > :nth-child(8n+7), .cards > :nth-child(8n+7), .steps > :nth-child(8n+7), .numbered > :nth-child(8n+7) { --c: #0B8FD6; }
+.ac-expertises > :nth-child(8n+8), .exp-grid > :nth-child(8n+8), .rows > :nth-child(8n+8), .sect-grid > :nth-child(8n+8), .pillars > :nth-child(8n+8), .levers > :nth-child(8n+8), .ac-reals > :nth-child(8n+8), .cards > :nth-child(8n+8), .steps > :nth-child(8n+8), .numbered > :nth-child(8n+8) { --c: #E59A00; }
+
+/* Accueil : chiffres clés */
+.page-accueil .ac-chiffres::before { height: 5px; background: var(--grad-ruban); }
+.page-accueil .ac-chiffre .ac-ico, .page-accueil .ac-bureau .ac-ico {
+  background: color-mix(in srgb, var(--c, #2563EB) 14%, #fff); color: var(--c, #2563EB);
+}
+
+/* Accueil : trois temps */
+.page-accueil .ac-temps li { border-top: 4px solid var(--c, #2563EB); }
+.page-accueil .ac-temps .n { background: var(--c, #2563EB); color: #fff; }
+
+/* Accueil : expertises */
+.page-accueil .ac-exp { border-top: 4px solid var(--c, #2563EB); }
+.page-accueil .ac-exp:hover { border-top-color: var(--c, #2563EB); box-shadow: 0 2px 4px rgba(10, 29, 56, .06), 0 20px 44px color-mix(in srgb, var(--c, #2563EB) 26%, transparent); }
+.page-accueil .ac-exp .ac-ico { background: color-mix(in srgb, var(--c, #2563EB) 14%, #fff); color: var(--c, #2563EB); }
+.page-accueil .ac-exp .filigrane { color: color-mix(in srgb, var(--c, #2563EB) 16%, transparent); }
+.page-accueil .ac-exp .ac-decouvrir .fl { background: var(--c, #2563EB); color: #fff; }
+.page-accueil a:hover .ac-decouvrir .fl { background: var(--ambre); color: #10294C; }
+.page-accueil .ac-exp.sig { background: linear-gradient(180deg, color-mix(in srgb, var(--c, #2563EB) 7%, #fff) 0%, #fff 60%); }
+.page-accueil .ac-pastille { background: var(--grad-chaud); color: #10294C; }
+
+/* Accueil : petits titres de section */
+.page-accueil .ac-sur { color: var(--bleu-vif); }
+.page-accueil .ac-sur::before { width: 34px; height: 4px; background: var(--grad-ruban); }
+.page-accueil .ac-video .ac-sur, .page-accueil .ac-evenement .ac-sur { color: var(--turquoise-clair); }
+.page-accueil .ac-lien { color: var(--bleu-vif); }
+
+/* Accueil : bandeau du haut */
+.page-accueil .ac-badge { background: rgba(255, 179, 33, .14); border-color: rgba(255, 179, 33, .55); color: #FFD583; }
+.page-accueil .ac-badge::before { background: var(--ambre); box-shadow: 0 0 0 0 rgba(255, 179, 33, .7); animation: rb-pulse 2.2s infinite; }
+@keyframes rb-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 179, 33, .7); } 70% { box-shadow: 0 0 0 9px rgba(255, 179, 33, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 179, 33, 0); } }
+.page-accueil .ac-profils a:hover { border-color: var(--turquoise-clair); color: #fff; background: rgba(14, 165, 160, .28); }
+
+/* Accueil : réalisation phare et réalisations */
+.page-accueil .ac-phare { box-shadow: 0 2px 4px rgba(10, 29, 56, .05), 0 24px 60px rgba(37, 99, 235, .14); }
+.page-accueil .ac-mini > div { background: color-mix(in srgb, var(--c, #2563EB) 11%, #fff); border-left: 3px solid var(--c, #2563EB); }
+.page-accueil .ac-mini .v { color: var(--c, #2563EB); }
+.page-accueil .ac-real { border-bottom: 4px solid var(--c, #2563EB); }
+.page-accueil .ac-real .tag { color: var(--c, #2563EB); }
+.page-accueil .ac-real:hover { box-shadow: 0 20px 44px color-mix(in srgb, var(--c, #2563EB) 24%, transparent); }
+.page-accueil .ac-confiance li { transition: border-color .2s, color .2s, background .2s; }
+.page-accueil .ac-confiance li:hover { border-color: var(--bleu-vif); color: var(--bleu-vif); background: #EEF4FF; }
+
+/* Accueil : prochain événement, en bandeau dégradé */
+.page-accueil .ac-evenement { background: linear-gradient(110deg, #10294C 0%, #1D4ED8 58%, #0EA5A0 100%); box-shadow: 0 16px 40px rgba(29, 78, 216, .28); }
+.page-accueil .ac-evenement .ac-ico { background: rgba(255, 255, 255, .16); color: #fff; }
+.page-accueil .ac-evenement .ac-decouvrir .fl { background: var(--ambre); color: #10294C; }
+
+/* Accueil : nous joindre */
+.page-accueil .ac-bureau { border-top: 4px solid var(--c, #2563EB); }
+.page-accueil .ac-tels .mini.wa { background: #E3F9EC; border-color: #BDEFD2; color: #137A43; }
+.page-accueil .ac-tels .mini:hover { border-color: var(--bleu-vif); color: var(--bleu-vif); }
+
+/* Accueil : appel final et bouton flottant */
+.page-accueil .ac-appel .ruban { width: 160px; height: 5px; background: var(--grad-ruban); }
+.page-accueil .ac-flottant { background: var(--grad-signature); border-color: transparent; }
+
+/* Autres pages : cartes et listes numérotées ---------------------------- */
+.exp { border-top: 3px solid var(--c, var(--noir)); }
+.exp .n, .xrow .n, .numbered .n, .sect .n { color: var(--c, var(--bleu-vif)); }
+.exp:hover { background: #fff; box-shadow: 0 18px 40px color-mix(in srgb, var(--c, #2563EB) 18%, transparent); }
+.exp:hover .arrow, .xrow:hover .arrow { color: var(--c, var(--bleu-vif)); }
+.xrow { border-left: 4px solid transparent; transition: background .24s, padding .24s, border-color .24s; }
+.xrow:hover { border-left-color: var(--c, var(--bleu-vif)); background: color-mix(in srgb, var(--c, #2563EB) 6%, #fff); }
+.xrow.sig { background: linear-gradient(110deg, #10294C 0%, #1D4ED8 70%, #0EA5A0 130%); border-left-color: var(--ambre); }
+.xrow.sig:hover { background: linear-gradient(110deg, #0A1D38 0%, #1D4ED8 60%, #0EA5A0 120%); }
+.xrow.sig .n, .xrow.sig .arrow, .xrow.sig .flag { color: var(--ambre); }
+.sect { border-top: 3px solid var(--c, var(--or)); border-radius: 4px; }
+.sect:hover { border-color: var(--c, var(--or)); background: color-mix(in srgb, var(--c, #2563EB) 14%, transparent); }
+.sect .n { color: color-mix(in srgb, var(--c, #2563EB) 55%, #fff); }
+.pillars > div, .levers > div, .steps li { border-top: 3px solid var(--c, var(--noir)); }
+.steps .n { background: none; -webkit-text-fill-color: currentColor; color: var(--c, var(--bleu-vif)); }
+.card .img { border-radius: 12px; border-bottom: 4px solid var(--c, transparent); }
+.card .tag { color: var(--c, var(--bleu-vif)); }
+.poles h4 { color: var(--turquoise-clair); }
+.poles { border-top-color: rgba(63, 224, 197, .5); }
+.prose blockquote { border-left: 4px solid var(--bleu-vif); }
+details.faq summary span { color: var(--bleu-vif); }
+.chip.on, .tab.on { color: var(--bleu-vif); border-bottom-color: var(--bleu-vif); }
+.pills a:hover { background: var(--bleu-vif); border-color: var(--bleu-vif); }
+.pager .on { background: var(--grad-signature); border-color: transparent; }
+.doc-link:hover { background: var(--bleu-vif); border-color: var(--bleu-vif); }
+.form input:focus, .form select:focus, .form textarea:focus { border-bottom-color: var(--bleu-vif); }
+.form .check input { accent-color: var(--bleu-vif); }
+.contact-grid aside > div { border-top: 3px solid transparent; border-image: var(--grad-signature) 1; }
+.dossier { border-color: var(--ambre); color: var(--ambre); }
+
+/* Pied de page ---------------------------------------------------------- */
+.foot { position: relative; background:
+  radial-gradient(45% 90% at 100% 0%, rgba(37, 99, 235, .25) 0%, rgba(37, 99, 235, 0) 70%),
+  radial-gradient(35% 80% at 0% 100%, rgba(14, 165, 160, .18) 0%, rgba(14, 165, 160, 0) 70%),
+  #0A1D38; }
+.foot::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--grad-ruban); }
+.foot a:hover, .foot-form .msg { color: var(--ambre); }
+.foot-form button { background: var(--grad-chaud); color: #10294C; }
+
+/* Assistant IA ---------------------------------------------------------- */
+.ia-bouton { background: var(--grad-signature); border-color: transparent; box-shadow: 0 10px 28px rgba(37, 99, 235, .4); }
+.ia-bouton:hover { background: var(--bleu-vif-2); }
+.ia-tete { background: linear-gradient(110deg, #10294C 0%, #1D4ED8 100%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-accueil .ac-badge::before { animation: none; }
+}
