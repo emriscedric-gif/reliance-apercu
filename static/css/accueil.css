@@ -1,0 +1,211 @@
+/* Reliance Business : page d'accueil (novembre 2026)
+   Structure reprise de l'accueil du SIME : photo d'ouverture, carte des chiffres,
+   cartes numérotées, bloc « Nous joindre », appel final, bouton flottant.
+   Charte du logo officiel : bleu marine #10294C, noir, blanc ; police Titillium Web
+   (variables définies dans site.css). Ce fichier ne sert qu'à la page d'accueil. */
+
+.page-accueil {
+  --or-pale: #E6EDF7;  /* bleu très pâle (fonds d'icônes) */
+  --carte: #FFFFFF;
+  --ombre: 0 1px 2px rgba(10, 29, 56, .05), 0 10px 30px rgba(10, 29, 56, .07);
+  --rayon: 16px;
+  --ruban: linear-gradient(90deg, var(--or) 0%, var(--or-clair) 55%, rgba(185, 205, 234, 0) 100%);
+}
+
+/* ---------- Ouverture ---------- */
+.ac-hero { min-height: 720px; display: flex; flex-direction: column; }
+.ac-hero > .veil { background: linear-gradient(180deg, rgba(10, 29, 56, .70) 0%, rgba(10, 29, 56, .40) 45%, rgba(10, 29, 56, .82) 100%); }
+.ac-hero-body { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 56px; padding-bottom: 150px; }
+.ac-badge { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: rgba(143, 176, 221, .16); border: 1px solid rgba(143, 176, 221, .45); color: var(--or-clair); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.ac-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--or); }
+.ac-titre { margin-top: 26px; max-width: 900px; font-family: var(--serif); font-weight: 600; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -.015em; }
+.ac-chapo { margin-top: 24px; max-width: 600px; font-size: 19px; line-height: 1.6; color: rgba(255, 255, 255, .86); }
+.ac-btns { margin-top: 34px; }
+.ac-hero .btn { border-radius: 10px; }
+
+.ac-profils { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ac-profils-l { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .7); margin-right: 4px; }
+.ac-profils a { padding: 9px 16px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, .32); background: rgba(10, 29, 56, .28); color: var(--ivoire); font-size: 14px; font-weight: 500; backdrop-filter: blur(4px); transition: border-color .2s, color .2s, background .2s; }
+.ac-profils a:hover { border-color: var(--or); color: var(--or-clair); background: rgba(10, 29, 56, .45); }
+.ac-profils a.plus { border-style: dashed; }
+
+/* ---------- Chiffres clés ---------- */
+.ac-chiffres-zone { position: relative; z-index: 3; margin-top: -96px; }
+.ac-chiffres { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--carte); border-radius: var(--rayon); box-shadow: var(--ombre); overflow: hidden; position: relative; }
+.ac-chiffres::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--ruban); }
+.ac-chiffre { display: flex; gap: 16px; align-items: flex-start; padding: 30px 28px 28px; }
+.ac-chiffre + .ac-chiffre { border-left: 1px solid var(--trait); }
+.ac-chiffre .v { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.1; color: var(--noir); }
+.ac-chiffre .l { margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--gris); }
+
+.ac-ico { flex: none; display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--or-pale); color: var(--or-texte); }
+.ac-ico .ico { width: 22px; height: 22px; }
+
+/* ---------- Sections ---------- */
+.ac-sec { padding-top: 104px; padding-bottom: 104px; }
+.ac-sec-haut0 { padding-top: 0; }
+.ac-fond-sable { background: var(--sable); }
+.ac-tete { max-width: 820px; margin-bottom: 48px; }
+.ac-tete-ligne { max-width: none; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.ac-sur { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--or-texte); margin-bottom: 16px; }
+.ac-sur::before { content: ""; width: 28px; height: 3px; border-radius: 2px; background: var(--ruban); }
+.ac-h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.12; letter-spacing: -.01em; }
+.ac-lien { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: var(--or-texte); }
+.ac-lien span { transition: transform .2s var(--ease); }
+.ac-lien:hover span { transform: translateX(4px); }
+
+/* Le cabinet : trois temps */
+.ac-cabinet .ac-h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.25; }
+.ac-temps { list-style: none; margin: 0 0 36px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ac-temps li { background: var(--carte); border-radius: var(--rayon); padding: 28px; box-shadow: var(--ombre); }
+.ac-temps .n { display: inline-block; font-size: 13px; font-weight: 700; color: var(--or-texte); background: var(--or-pale); border-radius: 6px; padding: 3px 9px; }
+.ac-temps h3 { margin-top: 16px; font-size: 19px; font-weight: 600; }
+.ac-temps p { margin-top: 8px; color: var(--gris); font-size: 15px; line-height: 1.6; }
+
+/* Expertises */
+.ac-expertises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.ac-exp { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 26px 24px 24px; background: var(--carte); border-radius: var(--rayon); box-shadow: var(--ombre); color: var(--noir); border-top: 3px solid transparent; transition: transform .25s var(--ease), box-shadow .25s, border-color .25s; }
+.ac-exp:hover { color: var(--noir); transform: translateY(-4px); border-top-color: var(--or); box-shadow: 0 2px 4px rgba(10, 29, 56, .06), 0 18px 40px rgba(10, 29, 56, .10); }
+.ac-exp .filigrane { position: absolute; right: 14px; top: 4px; font-family: var(--serif); font-weight: 600; font-size: 76px; line-height: 1; color: rgba(143, 176, 221, .16); pointer-events: none; }
+.ac-exp h3 { margin-top: 6px; font-size: 19px; font-weight: 600; line-height: 1.3; }
+.ac-exp p { flex: 1; font-size: 14.5px; line-height: 1.55; color: var(--gris); }
+.ac-exp.sig { border-top-color: var(--or); }
+.ac-pastille { align-self: flex-start; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--or-fonce); background: var(--or-pale); border-radius: 999px; padding: 4px 10px; }
+.ac-decouvrir { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--noir); }
+.ac-decouvrir .fl { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--noir); color: var(--or); font-size: 15px; letter-spacing: 0; transition: transform .2s var(--ease), background .2s; }
+a:hover .ac-decouvrir .fl { transform: translateX(3px); background: var(--or); color: var(--noir); }
+
+/* Réalisation phare */
+.ac-phare { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); background: var(--carte); border-radius: 22px; overflow: hidden; box-shadow: var(--ombre); }
+.ac-phare .media { min-height: 460px; background: var(--sable-2); }
+.ac-phare .media img { width: 100%; height: 100%; object-fit: cover; }
+.ac-phare .corps { padding: 52px 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+.ac-phare .texte { margin-top: 18px; color: var(--gris); font-size: 16.5px; line-height: 1.65; }
+.ac-mini { margin: 30px 0 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.ac-mini > div { background: var(--or-pale); border-radius: 12px; padding: 14px 14px 12px; }
+.ac-mini .v { font-family: var(--serif); font-weight: 600; font-size: 28px; color: var(--or-fonce); }
+.ac-mini .l { margin-top: 4px; font-size: 12.5px; line-height: 1.4; color: var(--gris-2); }
+.ac-phare .btn { align-self: flex-start; border-radius: 10px; }
+
+/* Autres réalisations */
+.ac-reals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ac-real { display: flex; flex-direction: column; background: var(--carte); border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre); color: var(--noir); transition: transform .25s var(--ease); }
+.ac-real:hover { color: var(--noir); transform: translateY(-4px); }
+.ac-real .img { aspect-ratio: 16 / 11; background: var(--sable-2); }
+.ac-real .img img { width: 100%; height: 100%; object-fit: cover; }
+.ac-real .vide { height: 100%; display: grid; place-items: center; color: var(--gris); font-size: 14px; }
+.ac-real .txt { padding: 22px 24px 26px; }
+.ac-real .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--or-texte); }
+.ac-real h3 { margin-top: 10px; font-family: var(--serif); font-weight: 600; font-size: 22px; line-height: 1.25; }
+.ac-real p { margin-top: 8px; font-size: 14.5px; line-height: 1.55; color: var(--gris); }
+
+.ac-confiance { margin-top: 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+.ac-confiance .ac-sur { margin: 0; }
+.ac-confiance ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.ac-confiance li { padding: 8px 14px; border: 1px solid var(--trait); border-radius: 999px; font-size: 14px; color: var(--gris-2); background: var(--carte); }
+
+/* Prochain événement */
+.ac-evenement { display: flex; align-items: center; gap: 20px; padding: 20px 24px; border-radius: var(--rayon); background: var(--noir); color: var(--ivoire); margin-bottom: 8px; }
+.ac-evenement:hover { color: var(--ivoire); }
+.ac-evenement .ac-ico { background: rgba(143, 176, 221, .18); color: var(--or); }
+.ac-evenement .quoi { flex: 1; display: flex; flex-direction: column; }
+.ac-evenement .ac-sur { margin-bottom: 4px; color: var(--or); }
+.ac-evenement strong { font-family: var(--serif); font-weight: 600; font-size: 22px; }
+.ac-evenement .ac-decouvrir { color: var(--ivoire); }
+.ac-evenement .ac-decouvrir .fl { background: var(--or); color: var(--noir); }
+
+/* Nous joindre */
+.ac-joindre { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ac-bureau { background: var(--carte); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+.ac-bureau h3 { margin-top: 8px; font-size: 20px; font-weight: 600; }
+.ac-bureau > p { color: var(--gris); font-size: 15px; line-height: 1.6; }
+.ac-tels { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.ac-tels li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ac-tels li span { flex: 1 1 140px; font-weight: 600; font-size: 15px; }
+.ac-tels .mini { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid var(--trait); color: var(--noir); }
+.ac-tels .mini:hover { border-color: var(--noir); color: var(--noir); }
+.ac-tels .mini.wa { background: var(--or-pale); border-color: var(--or-pale); color: var(--or-fonce); }
+.ac-mail { font-weight: 600; font-size: 16px; color: var(--noir); word-break: break-all; }
+.ac-bureau .ac-lien { margin-top: auto; padding-top: 10px; }
+
+/* Appel final */
+.ac-appel { background: var(--noir); color: var(--ivoire); padding: 96px 0 104px; }
+.ac-appel .ruban { width: 120px; height: 4px; border-radius: 2px; background: var(--ruban); margin-bottom: 28px; }
+.ac-appel .ac-h2 { max-width: 860px; font-size: clamp(32px, 4.2vw, 54px); }
+.ac-appel .btns { margin-top: 36px; }
+.ac-appel .btn { border-radius: 10px; }
+
+/* Bouton flottant */
+.ac-flottant { position: fixed; right: 20px; bottom: 20px; z-index: 50; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px; border-radius: 999px; background: var(--noir); color: var(--ivoire); font-weight: 600; font-size: 14.5px; box-shadow: 0 8px 24px rgba(10, 29, 56, .28); border: 1px solid rgba(143, 176, 221, .5); }
+.ac-flottant:hover { color: var(--or-clair); }
+.ac-flottant .ico { color: var(--or); }
+
+/* ---------- Tablette ---------- */
+@media (max-width: 1100px) {
+  .ac-chiffres { grid-template-columns: repeat(2, 1fr); }
+  .ac-chiffre:nth-child(3) { border-left: 0; }
+  .ac-chiffre:nth-child(n+3) { border-top: 1px solid var(--trait); }
+  .ac-expertises { grid-template-columns: repeat(2, 1fr); }
+  .ac-phare { grid-template-columns: minmax(0, 1fr); }
+  .ac-phare .media { min-height: 300px; aspect-ratio: 16 / 9; }
+  .ac-joindre { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 760px) {
+  .ac-hero { min-height: 0; }
+  .ac-hero-body { padding-top: 28px; padding-bottom: 120px; }
+  .ac-badge { font-size: 11.5px; padding: 7px 12px; }
+  .ac-chapo { font-size: 17px; }
+  .ac-btns .btn { flex: 1 1 100%; }
+  .ac-profils { gap: 8px; }
+  .ac-profils-l { width: 100%; }
+  .ac-profils a { font-size: 13.5px; padding: 8px 12px; }
+  .ac-chiffres-zone { margin-top: -80px; }
+  .ac-chiffre { flex-direction: column; gap: 10px; padding: 18px 16px; }
+  .ac-chiffre .ac-ico { width: 38px; height: 38px; border-radius: 10px; }
+  .ac-chiffre .v { font-size: 22px; }
+  .ac-chiffre .l { font-size: 13px; }
+  .ac-sec { padding-top: 72px; padding-bottom: 72px; }
+  .ac-sec-haut0 { padding-top: 0; }
+  .ac-tete { margin-bottom: 32px; }
+  .ac-temps { grid-template-columns: 1fr; gap: 10px; }
+  .ac-temps li { padding: 18px 20px; display: grid; grid-template-columns: auto 1fr; column-gap: 14px; }
+  .ac-temps .n { grid-row: span 2; align-self: start; }
+  .ac-temps h3 { margin-top: 0; font-size: 17px; }
+  .ac-temps p { margin-top: 4px; font-size: 14.5px; }
+  /* Expertises et réalisations : on fait défiler les cartes du doigt, comme les villages du SIME */
+  .ac-expertises, .ac-reals { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 -20px; padding: 6px 20px 18px; scrollbar-width: none; }
+  .ac-expertises::-webkit-scrollbar, .ac-reals::-webkit-scrollbar { display: none; }
+  .ac-exp, .ac-real { flex: 0 0 80%; scroll-snap-align: start; }
+  .ac-phare .corps { padding: 30px 22px 28px; }
+  .ac-mini { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .ac-mini > div { padding: 12px 10px 10px; }
+  .ac-mini .v { font-size: 22px; }
+  .ac-mini .l { font-size: 11.5px; }
+  .ac-tels li span { flex: 1 1 100%; }
+  .ac-evenement { flex-wrap: wrap; gap: 14px; padding: 18px; }
+  .ac-evenement strong { font-size: 19px; }
+  .ac-joindre { grid-template-columns: 1fr; gap: 14px; }
+  .ac-appel { padding: 72px 0 96px; }
+  .ac-appel .btn { flex: 1 1 100%; }
+  .ac-flottant span { display: none; }
+  .ac-flottant { padding: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ac-exp, .ac-real, .ac-lien span, .ac-decouvrir .fl { transition: none; }
+}
+
+/* ---------- Spot vidéo (option payante, 11/11/2026) ---------- */
+.ac-video { background: var(--noir); color: #fff; }
+.ac-video-grille { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center; padding-top: 88px; padding-bottom: 88px; }
+.ac-video .ac-sur { color: var(--or); }
+.ac-video .ac-h2 { color: #fff; }
+.ac-video-texte p:not(.ac-sur) { margin-top: 18px; font-size: 18px; line-height: 1.6; color: rgba(255, 255, 255, .8); }
+.ac-video-texte .btn { margin-top: 32px; }
+.ac-video-cadre { border-radius: var(--rayon); overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); background: #000; aspect-ratio: 16 / 9; }
+.ac-video-cadre video { width: 100%; height: 100%; display: block; }
+@media (max-width: 900px) { .ac-video-grille { grid-template-columns: 1fr; gap: 32px; padding-top: 64px; padding-bottom: 64px; } }
+.ac-video .btn-gold { background: #fff; color: var(--noir); border-color: #fff; }
+.ac-video .btn-gold:hover { background: var(--or-clair); border-color: var(--or-clair); color: var(--noir); }
