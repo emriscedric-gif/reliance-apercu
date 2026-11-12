@@ -223,3 +223,52 @@ details.faq summary span { color: var(--bleu-vif); }
 @media (prefers-reduced-motion: reduce) {
   .page-accueil .ac-badge::before { animation: none; }
 }
+
+/* Plus de couleur dans les zones claires (12/11/2026, 2e passage) -------
+   Le fond de page est un motif de taches de couleur douces qui se répète
+   sur toute la hauteur, puis certaines sections reçoivent un fond teinté
+   pleine largeur. */
+body {
+  background-color: #EDF3FF;
+  background-image:
+    radial-gradient(700px 460px at 0% 12%, rgba(37, 99, 235, .16) 0%, rgba(37, 99, 235, 0) 70%),
+    radial-gradient(640px 460px at 100% 38%, rgba(14, 165, 160, .16) 0%, rgba(14, 165, 160, 0) 70%),
+    radial-gradient(620px 420px at 8% 66%, rgba(124, 92, 255, .13) 0%, rgba(124, 92, 255, 0) 70%),
+    radial-gradient(680px 440px at 96% 90%, rgba(255, 179, 33, .16) 0%, rgba(255, 179, 33, 0) 70%);
+  background-size: 100% 1800px;
+  background-repeat: repeat-y;
+}
+.sand, .ac-fond-sable {
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(124, 92, 255, .16) 0%, rgba(124, 92, 255, 0) 70%),
+    radial-gradient(50% 80% at 0% 100%, rgba(14, 165, 160, .18) 0%, rgba(14, 165, 160, 0) 70%),
+    linear-gradient(160deg, #D8E5FF 0%, #E3ECFF 45%, #D8F2EC 100%);
+}
+/* Accueil : fonds teintés pleine largeur derrière les sections « wrap » */
+.page-accueil .ac-cabinet, .page-accueil section.wrap.ac-sec:not(.ac-sec-haut0):not(.ac-cabinet) { position: relative; }
+.page-accueil .ac-cabinet {
+  box-shadow: 0 0 0 100vmax #E7EEFF; clip-path: inset(-110px -100vmax 0);
+  background: #E7EEFF;
+}
+.page-accueil section.wrap.ac-sec:has(.ac-joindre) {
+  background: #FFEFD9; box-shadow: 0 0 0 100vmax #FFEFD9; clip-path: inset(0 -100vmax);
+}
+.page-accueil section.wrap.ac-sec-haut0 {
+  background: #E2F5EF; box-shadow: 0 0 0 100vmax #E2F5EF; clip-path: inset(-100px -100vmax 0); padding-bottom: 72px;
+}
+/* Pages intérieures : une section claire sur deux en teinte bleu-vert */
+main > section.sec:not(.dark):not(.sand):not(.hero):nth-of-type(even),
+main > section.sec-md:not(.dark):not(.sand):not(.hero):nth-of-type(even) {
+  background: linear-gradient(135deg, rgba(37, 99, 235, .10) 0%, rgba(14, 165, 160, .11) 100%);
+}
+main > section.sec:not(.dark):not(.sand):not(.hero):nth-of-type(odd),
+main > section.sec-md:not(.dark):not(.sand):not(.hero):nth-of-type(odd) {
+  background: linear-gradient(135deg, rgba(255, 179, 33, .08) 0%, rgba(124, 92, 255, .07) 100%);
+}
+/* Cartes blanches : fine bordure pour bien ressortir sur le fond coloré */
+.page-accueil .ac-chiffres, .page-accueil .ac-temps li, .page-accueil .ac-exp, .page-accueil .ac-real,
+.page-accueil .ac-bureau, .page-accueil .ac-phare { border-left: 1px solid rgba(37, 99, 235, .10); border-right: 1px solid rgba(37, 99, 235, .10); }
+.page-accueil .ac-confiance li { background: #fff; }
+.exp { background: rgba(255, 255, 255, .6); }
+.xrow { background: rgba(255, 255, 255, .5); padding-left: 16px; padding-right: 16px; }
+.page-accueil section.wrap:has(.ac-evenement) { background: #E2F5EF; box-shadow: 0 0 0 100vmax #E2F5EF; clip-path: inset(0 -100vmax); padding-bottom: 56px; }
